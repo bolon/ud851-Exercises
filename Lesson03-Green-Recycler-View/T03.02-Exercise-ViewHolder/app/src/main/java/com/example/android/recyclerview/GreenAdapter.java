@@ -26,12 +26,12 @@ import android.widget.TextView;
 /**
  * We couldn't come up with a good name for this class. Then, we realized
  * that this lesson is about RecyclerView.
- *
+ * <p>
  * RecyclerView... Recycling... Saving the planet? Being green? Anyone?
  * #crickets
- *
+ * <p>
  * Avoid unnecessary garbage collection by using RecyclerView and ViewHolders.
- *
+ * <p>
  * If you don't like our puns, we named this Adapter GreenAdapter because its
  * contents are green.
  */
@@ -66,7 +66,6 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
     }
 
     /**
-     *
      * This gets called when each new ViewHolder is created. This happens when the RecyclerView
      * is laid out. Enough ViewHolders will be created to fill the screen and allow for scrolling.
      *
@@ -128,5 +127,16 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
     // TODO (17) Within bind, set the text of listItemNumberView to the listIndex
     // TODO (18) Be careful to get the String representation of listIndex, as using setText with an int does something different
 
+    class NumberViewHolder extends RecyclerView.ViewHolder {
+        TextView listItemNumberView;
+
+        NumberViewHolder(View itemView) {
+            super(itemView);
+            listItemNumberView = (TextView) itemView.findViewById(R.id.tv_item_number);
+        }
+
+        void bind(int listIndex) {
+            listItemNumberView.setText(String.valueOf(listIndex));
+        }
     }
 }
